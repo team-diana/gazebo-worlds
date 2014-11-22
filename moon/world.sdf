@@ -10,5 +10,11 @@
     <include>
       <uri>model://moon_terrain</uri>
     </include>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>19.2705 -18.9069 5.12837 0 0.335456 2.33219</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
   </world>
 </sdf>
