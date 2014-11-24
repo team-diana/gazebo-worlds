@@ -1,0 +1,1572 @@
+<sdf version='1.5'>
+  <world name='moon'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+      <magnetic_field>5.5645e-06 2.28758e-05 -4.23884e-05</magnetic_field>
+    </physics>
+    <model name='moon_terrain'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <heightmap>
+              <uri>file://media/materials/textures/moon_heightmap.png</uri>
+              <size>129 129 10</size>
+              <pos>0 0 0</pos>
+              <texture>
+                <size>10</size>
+                <diffuse>__default__</diffuse>
+                <normal>__default__</normal>
+              </texture>
+              <blend>
+                <min_height>0</min_height>
+                <fade_dist>0</fade_dist>
+              </blend>
+            </heightmap>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='terrain'>
+          <geometry>
+            <heightmap>
+              <use_terrain_paging>0</use_terrain_paging>
+              <texture>
+                <diffuse>file://media/materials/textures/moon1_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/moon2_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/moon3_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <blend>
+                <min_height>2</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <blend>
+                <min_height>4</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <uri>file://media/materials/textures/moon_heightmap.png</uri>
+              <size>129 129 10</size>
+              <pos>0 0 0</pos>
+            </heightmap>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>9.94224 12.6497 21.0104 0 0.963456 -2.063</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='ramp-double-low_0'>
+      <link name='ramp1_link_b'>
+        <pose>-0.51 0 0 0 -0 3.1415</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <link name='ramp1_link_f'>
+        <pose>0.51 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>6.44048 -9 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-double-low_1'>
+      <link name='ramp1_link_b'>
+        <pose>-0.51 0 0 0 -0 3.1415</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <link name='ramp1_link_f'>
+        <pose>0.51 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>6.44778 -8.44623 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-double-low_2'>
+      <link name='ramp1_link_b'>
+        <pose>-0.51 0 0 0 -0 3.1415</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <link name='ramp1_link_f'>
+        <pose>0.51 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>2.57352 -9.01436 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-double-low_3'>
+      <link name='ramp1_link_b'>
+        <pose>-0.51 0 0 0 -0 3.1415</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <link name='ramp1_link_f'>
+        <pose>0.51 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>2.5487 -8.39108 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-double-high'>
+      <link name='ramp1_link_b'>
+        <pose>-0.52 0 0 0 -0 3.1415</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <link name='ramp1_link_f'>
+        <pose>0.52 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>6.46319 -7.77372 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-double-high_0'>
+      <link name='ramp1_link_b'>
+        <pose>-0.52 0 0 0 -0 3.1415</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <link name='ramp1_link_f'>
+        <pose>0.52 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>6.47363 -7.23662 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-double-high_1'>
+      <link name='ramp1_link_b'>
+        <pose>-0.52 0 0 0 -0 3.1415</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <link name='ramp1_link_f'>
+        <pose>0.52 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>2.4749 -7.76993 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-double-high_2'>
+      <link name='ramp1_link_b'>
+        <pose>-0.52 0 0 0 -0 3.1415</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_b'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <link name='ramp1_link_f'>
+        <pose>0.52 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_f'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>2.45948 -7.25498 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-single-high'>
+      <link name='ramp1_link_'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>6 -5 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-single-high_0'>
+      <link name='ramp1_link_'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>3 -5 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-single-low'>
+      <link name='ramp1_link_'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.4</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.4</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>6 -3 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-single-low_0'>
+      <link name='ramp1_link_'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.4</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.4</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>3 -3 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-single-high_1'>
+      <link name='ramp1_link_'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>6 -1 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-single-high_1_clone'>
+      <link name='ramp1_link_'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>4.46695 -1 -9.9e-05 -0.000198 -0 3e-06</pose>
+    </model>
+    <model name='ramp-single-high_2'>
+      <link name='ramp1_link_'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>6 0.435414 0 0 -0 0</pose>
+    </model>
+    <model name='ramp-single-high_2_clone'>
+      <link name='ramp1_link_'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ramp1_collision_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='ramp1_visual_'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ramp-single-low/meshes/ramp1.dae</uri>
+              <scale>0.5 0.5 0.6</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+      </link>
+      <pose>4.43402 0.444222 -0.00014 0.000279 -0 3e-06</pose>
+    </model>
+    <state world_name='moon'>
+      <sim_time>258 544000000</sim_time>
+      <real_time>315 311385412</real_time>
+      <wall_time>1416862122 237567448</wall_time>
+      <model name='moon_terrain'>
+        <pose>0 0 0 0 -0 0</pose>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-double-high'>
+        <pose>6.46405 -7.77348 -0.00032 0 0.000313 -0.001484</pose>
+        <link name='ramp1_link_b'>
+          <pose>5.94405 -7.77271 -0.000157 -1.05879e-22 -0.000313 3.14002</pose>
+          <velocity>8e-06 3e-06 -0.04739 0.000181 0.11478 8e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='ramp1_link_f'>
+          <pose>6.98233 -7.77473 -0.00011 5.29396e-23 0.00022 -0.001485</pose>
+          <velocity>6e-06 -3e-06 -0.038012 0.000142 0.096024 -4e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-double-high_0'>
+        <pose>6.47445 -7.23639 2e-06 0 -8.9e-05 -0.001427</pose>
+        <link name='ramp1_link_b'>
+          <pose>5.95446 -7.23565 -4.4e-05 0 8.9e-05 3.14007</pose>
+          <velocity>-1e-06 3e-06 -0.019028 -8.8e-05 -0.058057 -4e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='ramp1_link_f'>
+          <pose>6.9928 -7.23759 -2.6e-05 -2.9e-05 -6.3e-05 -0.001428</pose>
+          <velocity>-2e-06 -4e-06 -0.009422 -5.6e-05 -0.038844 5e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-double-high_1'>
+        <pose>2.47565 -7.76972 2e-06 -1.32349e-23 -8.9e-05 -0.001301</pose>
+        <link name='ramp1_link_b'>
+          <pose>1.95565 -7.76905 -4.4e-05 0 8.9e-05 3.1402</pose>
+          <velocity>-1e-06 3e-06 -0.019028 -8e-05 -0.058057 -4e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='ramp1_link_f'>
+          <pose>2.99415 -7.77081 -2.6e-05 -2.9e-05 -6.3e-05 -0.001302</pose>
+          <velocity>-2e-06 -4e-06 -0.009422 -5.1e-05 -0.038844 5e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-double-high_2'>
+        <pose>2.4602 -7.25478 -5.8e-05 2.9e-05 6.3e-05 -0.001252</pose>
+        <link name='ramp1_link_b'>
+          <pose>1.9402 -7.25413 -2.6e-05 -2.9e-05 -6.3e-05 3.14025</pose>
+          <velocity>2e-06 4e-06 -0.009422 5.3e-05 0.038844 5e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='ramp1_link_f'>
+          <pose>2.97876 -7.25583 -1.6e-05 -8.3e-05 9.5e-05 -0.001253</pose>
+          <velocity>-2e-06 -4e-06 0.000225 -0.024101 0.037532 -6e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-double-low_0'>
+        <pose>6.44156 -8.99968 1e-06 0 -8.9e-05 -0.001857</pose>
+        <link name='ramp1_link_b'>
+          <pose>5.93156 -8.99874 -4.4e-05 0 8.9e-05 3.13964</pose>
+          <velocity>-1e-06 3e-06 -0.019028 -0.000113 -0.058057 -4e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='ramp1_link_f'>
+          <pose>6.9494 -9.00126 -2.6e-05 -2.9e-05 -6.3e-05 -0.001859</pose>
+          <velocity>-2e-06 -4e-06 -0.009422 -7.3e-05 -0.038844 5e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-double-low_1'>
+        <pose>6.4488 -8.44593 1e-06 0 -8.9e-05 -0.001765</pose>
+        <link name='ramp1_link_b'>
+          <pose>5.9388 -8.44503 -4.4e-05 0 8.9e-05 3.13973</pose>
+          <velocity>-1e-06 3e-06 -0.019028 -0.000107 -0.058057 -4e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='ramp1_link_f'>
+          <pose>6.95676 -8.44743 -2.6e-05 -2.9e-05 -6.3e-05 -0.001767</pose>
+          <velocity>-2e-06 -4e-06 -0.009422 -6.9e-05 -0.038844 5e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-double-low_2'>
+        <pose>2.5745 -9.01407 -5.8e-05 2.9e-05 6.3e-05 -0.001698</pose>
+        <link name='ramp1_link_b'>
+          <pose>2.0645 -9.01321 -2.6e-05 -2.9e-05 -6.3e-05 3.1398</pose>
+          <velocity>2e-06 4e-06 -0.009422 7e-05 0.038844 5e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='ramp1_link_f'>
+          <pose>3.08254 -9.01551 -1.6e-05 -8.3e-05 9.5e-05 -0.0017</pose>
+          <velocity>-2e-06 -4e-06 0.000225 -0.024084 0.037543 -6e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-double-low_3'>
+        <pose>2.54963 -8.39081 2e-06 0 -0.00022 -0.001604</pose>
+        <link name='ramp1_link_b'>
+          <pose>2.03963 -8.38999 -0.00011 0 0.00022 3.1399</pose>
+          <velocity>-6e-06 3e-06 -0.038012 -0.000162 -0.096024 -4e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='ramp1_link_f'>
+          <pose>3.05777 -8.39217 -7.3e-05 2.64698e-23 -0.000145 -0.001605</pose>
+          <velocity>-2e-06 -3e-06 -0.028558 -0.000124 -0.077116 4e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-single-high'>
+        <pose>5.99978 -4.99991 -0.00014 0.000279 -0 0.000122</pose>
+        <link name='ramp1_link_'>
+          <pose>5.99978 -4.99991 -0.00014 0.000279 -0 0.000122</pose>
+          <velocity>-2e-06 -2e-06 -0.0413 0.1026 1.2e-05 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-single-high_0'>
+        <pose>2.9998 -4.99991 -0.000179 -6.61745e-24 0.000359 0.000109</pose>
+        <link name='ramp1_link_'>
+          <pose>2.9998 -4.99991 -0.000179 -6.61745e-24 0.000359 0.000109</pose>
+          <velocity>3e-06 0 -0.05228 -1.4e-05 0.12456 -3e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-single-high_1'>
+        <pose>5.99984 -0.999933 -5.3e-05 0 -0.000105 8.5e-05</pose>
+        <link name='ramp1_link_'>
+          <pose>5.99984 -0.999933 -5.3e-05 0 -0.000105 8.5e-05</pose>
+          <velocity>-1e-06 1e-06 -0.024037 6e-06 -0.068074 -5.30625e-23</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-single-high_1_clone'>
+        <pose>4.98716 -0.992446 -5.3e-05 0 -0.000105 -3.14152</pose>
+        <link name='ramp1_link_'>
+          <pose>4.98716 -0.992446 -5.3e-05 0 -0.000105 -3.14152</pose>
+          <velocity>1e-06 -1e-06 -0.024037 -5e-06 0.068074 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-single-high_2'>
+        <pose>5.99992 0.435449 -0.000179 0 0.000359 4.5e-05</pose>
+        <link name='ramp1_link_'>
+          <pose>5.99992 0.435449 -0.000179 0 0.000359 4.5e-05</pose>
+          <velocity>3e-06 0 -0.05228 -6e-06 0.12456 -3e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-single-high_2_clone'>
+        <pose>4.97518 0.444208 -0.000128 0 -0.000256 -3.14156</pose>
+        <link name='ramp1_link_'>
+          <pose>4.97518 0.444208 -0.000128 0 -0.000256 -3.14156</pose>
+          <velocity>2e-06 0 -0.042941 -4e-06 0.105882 3e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-single-low'>
+        <pose>5.99981 -2.99992 -0.000239 -6.61745e-24 -0.000479 0.000106</pose>
+        <link name='ramp1_link_'>
+          <pose>5.99981 -2.99992 -0.000239 -6.61745e-24 -0.000479 0.000106</pose>
+          <velocity>-6e-06 0 -0.061545 1.5e-05 -0.143089 9e-06</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ramp-single-low_0'>
+        <pose>2.99981 -2.99992 -2.9e-05 0 5.7e-05 0.000103</pose>
+        <link name='ramp1_link_'>
+          <pose>2.99981 -2.99992 -2.9e-05 0 5.7e-05 0.000103</pose>
+          <velocity>0 1e-06 -0.014471 -5e-06 0.048942 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+    </state>
+  </world>
+</sdf>
